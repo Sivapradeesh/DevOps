@@ -1,18 +1,15 @@
-def bubble_sort(arr):
-    n = len(arr)
+def reverse_string(s):
+    return s[::-1]
 
-    for i in range(n):
-        for j in range(n - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+def count_vowels(s):
+    vowels = "aeiouAEIOU"
+    return sum(1 for ch in s if ch in vowels)
 
-    return arr
+text = input("Enter a string: ")
 
-
-numbers = [64, 34, 25, 12, 22, 11, 90]
-
-print("Original array:", numbers)
-
-sorted_numbers = bubble_sort(numbers)
-
-print("Sorted array:", sorted_numbers)
+print("Original String :", text)
+print("Reversed String :", reverse_string(text))
+print("Uppercase       :", text.upper())
+print("Lowercase       :", text.lower())
+print("Character Count :", len(text))
+print("Vowel Count     :", count_vowels(text))
