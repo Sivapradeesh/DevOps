@@ -1,0 +1,80 @@
+# Sorting Application with Multiple Features
+
+def bubble_sort(arr, reverse=False):
+    n = len(arr)
+
+    for i in range(n):
+        for j in range(n - i - 1):
+
+            if reverse:
+                if arr[j] < arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            else:
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    return arr
+
+
+while True:
+
+    print("\n========= SORTING APPLICATION =========")
+    print("1. Ascending Sort")
+    print("2. Descending Sort")
+    print("3. Search Number")
+    print("4. Find Largest Number")
+    print("5. Find Smallest Number")
+    print("6. Remove Duplicates")
+    print("7. Display Statistics")
+    print("8. Exit")
+
+    choice = input("\nEnter your choice: ")
+
+    if choice == "8":
+        print("Thank You!")
+        break
+
+    text = input("\nEnter numbers separated by spaces: ").strip()
+
+    if text == "":
+        print("Error: Empty input!")
+        continue
+
+    try:
+        numbers = list(map(int, text.split()))
+    except ValueError:
+        print("Invalid input! Enter only integers.")
+        continue
+
+    if choice == "1":
+        print("Ascending Order :", bubble_sort(numbers.copy()))
+
+    elif choice == "2":
+        print("Descending Order:", bubble_sort(numbers.copy(), True))
+
+    elif choice == "3":
+        key = int(input("Enter number to search: "))
+        if key in numbers:
+            print(key, "Found")
+        else:
+            print(key, "Not Found")
+
+    elif choice == "4":
+        print("Largest Number:", max(numbers))
+
+    elif choice == "5":
+        print("Smallest Number:", min(numbers))
+
+    elif choice == "6":
+        unique = list(dict.fromkeys(numbers))
+        print("Without Duplicates:", unique)
+
+    elif choice == "7":
+        print("Total Numbers :", len(numbers))
+        print("Sum           :", sum(numbers))
+        print("Average       :", sum(numbers) / len(numbers))
+        print("Maximum       :", max(numbers))
+        print("Minimum       :", min(numbers))
+
+    else:
+        print("Invalid Choice!")
